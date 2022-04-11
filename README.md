@@ -1,9 +1,11 @@
 p4a
 ===
 
+This version of p4a is a fork of the original abandoned [old p4a project by iamthesux](https://github.com/iamthesux/p4a). This version currently supports Python 3.8.1.
+
 A collection of tools for working with the Real Virtuality engine.
 
-###Features
+## Features
 
 - can parse both text and binary rap formats
 - outputs rap data as formatted text
@@ -11,7 +13,7 @@ A collection of tools for working with the Real Virtuality engine.
 - parses pbo
 
 
-###Possible Uses
+## Possible Uses
 
 * You need to convert a biedi file to sqm or vice versa with a little 
   more control than the existing tools offer.
@@ -22,18 +24,18 @@ A collection of tools for working with the Real Virtuality engine.
 * You have a mission with 100 players and need to append some init code
   to every one and ensure they are playable.
 
-###Installation
+## Installation
 
 Install directly from github with pip:
 ```
-pip install https://github.com/iamthesux/p4a/archive/master.zip
+pip install https://github.com/kerkkoh/p4a/archive/master.zip
 ```
 
-###Usage
+## Usage
 
 See the two examples provided or refer to the source.
 
-###Limitations
+## Limitations
 
 * It may or may not detect syntax errors.
 * Comments and preprocessor are currently unsupported and will cause it to break
