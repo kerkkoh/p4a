@@ -64,12 +64,12 @@ class Reader(object):
 		arval = False
 		i = 0
 		while (i < len(tokens)):
-			if DEBUG: print tokens[i]
+			if DEBUG: print(tokens[i])
 			if (tokens[i] == "class" and tokens[i+1] != "="):
-				if DEBUG: print "K: %s" % tokens[i+1]
+				if DEBUG: print("K: %s" % tokens[i+1])
 				k = Klass(tokens[i+1])
 				
-				if DEBUG: print "TK: %s" % tokens[i+2]
+				if DEBUG: print("TK: %s" % tokens[i+2])
 				if tokens[i+2] == ';':
 					k.extern = True
 					ks[-1](k)
@@ -81,23 +81,23 @@ class Reader(object):
 					ks.append(k)
 				i+=3
 			elif (tokens[i] == "{"):
-				if DEBUG: print "KE"
+				if DEBUG: print("KE")
 				bs[-1]+=1
 				i+=1
 			elif (tokens[i] == "}"):
 				
 				bs[-1]-=1
 				if bs[-1] == 0:
-					if DEBUG: print "KL"
+					if DEBUG: print("KL")
 					k = ks.pop()
 					ks[-1](k)
 					bs.pop()
 					i+=2;
 				else:
-					if DEBUG: print "KnL"
+					if DEBUG: print("KnL")
 					i+=1
 			elif not kw and not _kwp.search(tokens[i]):
-				if DEBUG: print "kw"
+				if DEBUG: print("kw")
 				kw = tokens[i]
 				if tokens[i+1] == "[":
 					arval = True
@@ -108,7 +108,7 @@ class Reader(object):
 					vw=""
 					i+=2
 			elif tokens[i] == ";":
-				if DEBUG: print "kve"
+				if DEBUG: print("kve")
 				if kw:
 					if arval:
 						ks[-1][kw] = va
@@ -120,10 +120,10 @@ class Reader(object):
 				
 				if arval:
 					if tokens[i] != ",":
-						if DEBUG: print "kva"
+						if DEBUG: print("kva")
 						va.append(uq(value(tokens[i])))
 				else:
-					if DEBUG: print "kvs"
+					if DEBUG: print("kvs")
 					vw += tokens[i]
 				i+=1
 		return ks[0]

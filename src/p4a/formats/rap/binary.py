@@ -42,13 +42,13 @@ class Class(Entry):
 		self.klass = Klass(self.name)
 		pos = rint(fh)
 		
-		#print "%(n)s -> %(p)d" % dict(n=self.name, p=pos)
+		#print("%(n)s -> %(p)d" % dict(n=self.name, p=pos)
 		curpos = fh.tell()
 		fh.seek(fh.start + pos)
 		self.klass.inherits = asciz(fh)
 		num = cint(fh)
 		if DEBUG:
-			print "CLASS: %(n)s -> %(p)d[%(num)d]" % dict(n=self.name, p=pos, num=num)
+			print("CLASS: %(n)s -> %(p)d[%(num)d]" % dict(n=self.name, p=pos, num=num))
 		for i in range(num):
 			e = ParseEntry(fh)
 			if type(e) is Class:
@@ -64,7 +64,7 @@ class Extern(Entry):
 		super(Extern, self).parse(fh)
 		self.klass = Klass(self.name)
 		self.klass.extern = True
-		if DEBUG: print "EXTERN: %(n)s" % dict(n=self.name)
+		if DEBUG: print("EXTERN: %(n)s" % dict(n=self.name))
 		
 ValueTypes = [asciz, rfloat, rint, rint, Variable]
 
@@ -74,8 +74,8 @@ class Value(Entry):
 		super(Value, self).parse(fh)
 		self.value = ValueTypes[t](fh)
 		
-		if DEBUG: print ("VALUE:%(t)s:%(n)s = %(val)s" % 
-			dict(n=self.name,val=str(self.value),t=ValueTypes[t].__name__))
+		if DEBUG: print(("VALUE:%(t)s:%(n)s = %(val)s" % 
+			dict(n=self.name,val=str(self.value),t=ValueTypes[t].__name__)))
 
 class Array(Entry):
 	def __init__(self):
@@ -83,7 +83,7 @@ class Array(Entry):
 	def parse(self, fh):
 		super(Array, self).parse(fh)
 		num = cint(fh)
-		if DEBUG: print "ARRAY: %(n)s[%(num)d]" % dict(n=self.name,num=num)
+		if DEBUG: print("ARRAY: %(n)s[%(num)d]" % dict(n=self.name,num=num))
 		for i in range(num):
 			self.value.append(ParseEntry(fh, True))
 
@@ -92,7 +92,7 @@ class Delete(Entry):
 		super(Delete, self).parse(fh)
 		self.klass = Klass(self.name)
 		self.klass.delete = True
-		if DEBUG: print '%s:%s' % (self.klass.delete,self.name)
+		if DEBUG: print('%s:%s' % (self.klass.delete,self.name))
 		#raise NotImplementedError
 
 class NestedArray(list):

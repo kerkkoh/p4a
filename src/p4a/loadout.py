@@ -1,6 +1,3 @@
-import pprint
-import cStringIO
-
 from .formats.rap import Klass
 
 _mode_flags = [

@@ -1,5 +1,4 @@
 import re
-from StringIO import StringIO
 _kwp = re.compile(r'\W')
 _uqp = re.compile(r'^"|"$')
 _dqp = re.compile(r'""')
